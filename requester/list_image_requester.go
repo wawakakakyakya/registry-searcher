@@ -38,3 +38,7 @@ func (l *ListImageRequester) parse(base string, version string) (string, error) 
 	u.Path = path.Join(u.Path, version, "_catalog")
 	return u.String(), nil
 }
+
+func NewListImageRequester(url *URL) RequesterInterface {
+	return &ListImageRequester{url: url}
+}

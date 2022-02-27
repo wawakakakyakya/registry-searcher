@@ -27,6 +27,6 @@ func (l *ListImageCmd) SetFlags(f *flag.FlagSet) {
 
 func (l *ListImageCmd) Execute(mainCtx context.Context, f *flag.FlagSet, _ ...interface{}) subcommands.ExitStatus {
 	// 依存関係はここでまとめる
-	lisRequester := requester.NewRequester(&listURL, "list")
+	lisRequester := requester.NewListImageRequester(&listURL)
 	return l._Execute(mainCtx, lisRequester)
 }

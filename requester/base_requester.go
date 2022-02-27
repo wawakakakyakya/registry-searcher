@@ -70,12 +70,3 @@ func (r *baseRequester) Get(url string, resChan chan string) error {
 	resChan <- printBody(resp.Body)
 	return nil
 }
-
-func NewRequester(url *URL, spec string) RequesterInterface {
-	switch spec {
-	case "list":
-		return &ListImageRequester{url: url}
-	default:
-		return nil
-	}
-}
