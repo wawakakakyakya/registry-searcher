@@ -16,7 +16,6 @@ type URL struct {
 }
 
 type baseRequester struct {
-	// url URL
 }
 
 func (r *baseRequester) getVersion(url *URL) string {
