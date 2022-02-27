@@ -13,7 +13,7 @@ import (
 func init() {
 	subcommands.Register(&subcmd.ListImageCmd{}, "List command register")
 	subcommands.Register(&subcmd.GetManifestCmd{}, "Get container manifest")
-
+	subcommands.Register(&subcmd.GetTagCmd{}, "Get tag list")
 	flag.Parse()
 }
 
