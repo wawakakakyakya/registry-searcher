@@ -4,6 +4,11 @@
 *.dll
 *.so
 *.dylib
+registry-searcher
+
+.devcontainer
+.vscode
+docker-compose.yml
 
 # Test binary, built with `go test -c`
 *.test
