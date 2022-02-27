@@ -48,7 +48,7 @@ func (l *baseSubCmd) _Execute(mainCtx context.Context, requester requester.Reque
 		log.Println("context was timeout!")
 		return subcommands.ExitFailure
 	case res := <-resChan: // normal end
-		fmt.Println(res)
+		fmt.Print(res)
 		return subcommands.ExitSuccess
 	case err := <-errChan: // err in execute
 		fmt.Println(err.Error())
