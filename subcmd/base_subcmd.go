@@ -22,7 +22,7 @@ func (*baseSubCmd) Usage() string {
 }
 
 func (l *baseSubCmd) execute(requester requester.RequesterInterface) {
-	url, err := requester.MakeURL()
+	url, err := requester.GetUrl()
 	if err != nil {
 		log.Fatal("parse url failed")
 		errChan <- err
