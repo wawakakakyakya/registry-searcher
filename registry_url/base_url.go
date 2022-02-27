@@ -2,7 +2,6 @@ package registry_url
 
 import (
 	"fmt"
-	"net/url"
 )
 
 type baseRegistryURL struct {
@@ -22,13 +21,4 @@ func (b *baseRegistryURL) getScheme(useSsl bool) string {
 
 func (b *baseRegistryURL) getAuthority(addr string, port int) string {
 	return fmt.Sprintf("%s:%d", addr, port)
-}
-
-//entry point
-func (l *ListImageUrl) MakeUrl() (string, error) {
-	absUrl := l.makeAbsURL()
-	if _, err := url.Parse(absUrl); err != nil {
-		return "", err
-	}
-	return absUrl, nil
 }
