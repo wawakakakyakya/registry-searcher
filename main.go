@@ -12,6 +12,7 @@ import (
 
 func init() {
 	subcommands.Register(&subcmd.ListImageCmd{}, "List command register")
+	subcommands.Register(&subcmd.GetManifestCmd{}, "Get container manifest")
 
 	flag.Parse()
 }

@@ -1,11 +1,9 @@
 package requester
 
 import (
-	"fmt"
 	"io"
 	"io/ioutil"
-	"net/url"
-	"path"
+	"registry-searcher/registry_url"
 )
 
 func printBody(body io.ReadCloser) string {
@@ -17,24 +15,18 @@ func printBody(body io.ReadCloser) string {
 
 type ListImageRequester struct {
 	// url URL
-	url *URL
+	url registry_url.RegistryUrlInterface
 	*baseRequester
 }
 
-func (l *ListImageRequester) MakeURL() (string, error) {
-	url, err := l._MakeURL(l.url)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-	return url, nil
-}
-
-func (l *ListImageRequester) parse(base string, version string) (string, error) {
-	u, err := url.Parse(base)
+func (l *ListImageRequester) GetUrl() (string, error) {
+	url, err := l.url.MakeUrl()
 	if err != nil {
 		return "", err
 	}
+	return url, err
+}
 
-	u.Path = path.Join(u.Path, version, "_catalog")
-	return u.String(), nil
+func NewListImageRequester(url registry_url.RegistryUrlInterface) RequesterInterface {
+	return &ListImageRequester{url: url}
 }
