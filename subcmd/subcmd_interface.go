@@ -1,4 +1,4 @@
-package subCmd
+package subcmd
 
 import (
 	"context"

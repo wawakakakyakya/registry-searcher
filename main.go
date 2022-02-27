@@ -4,14 +4,14 @@ import (
 	"context"
 	"flag"
 	"os"
-	subCmd "registry-searcher/subcmd"
+	"registry-searcher/subcmd"
 	"time"
 
 	"github.com/google/subcommands"
 )
 
 func init() {
-	subcommands.Register(&subCmd.ListImageCmd{}, "List command register")
+	subcommands.Register(&subcmd.ListImageCmd{}, "List command register")
 
 	flag.Parse()
 }
