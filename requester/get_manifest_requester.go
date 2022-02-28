@@ -10,12 +10,16 @@ type GetManifestRequester struct {
 	*baseRequester
 }
 
-func (l *GetManifestRequester) GetUrl() (string, error) {
-	url, err := l.url.MakeUrl()
+func (r *GetManifestRequester) GetUrl() (string, error) {
+	url, err := r.url.MakeUrl()
 	if err != nil {
 		return "", err
 	}
 	return url, err
+}
+
+func (r *GetManifestRequester) Execute(url string) (string, error) {
+	return r.get(url)
 }
 
 func NewGetManifestRequester(url registry_url.RegistryUrlInterface) RequesterInterface {
