@@ -24,8 +24,7 @@ func (l *GetManifestCmd) SetFlags(f *flag.FlagSet) {
 	f.IntVar(&getManifestUrl.Port, "port", 5000, "port number")
 	f.IntVar(&getManifestUrl.Version, "version", 2, "registry version, default 2")
 	f.BoolVar(&getManifestUrl.UseSsl, "usessl", true, "http(false) or https(default)")
-	f.StringVar(&getManifestUrl.Tag, "tag", "latest", "image tag(default: latest)")
-	f.StringVar(&getManifestUrl.Image, "image", "", "image name")
+	f.StringVar(&getManifestUrl.Image, "image", "", "specity image and tag(default: latest) ex: image:tag")
 
 }
 
