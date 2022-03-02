@@ -21,6 +21,7 @@ func (*baseSubCmd) Usage() string {
 `
 }
 
+//run in goroutine
 func (l *baseSubCmd) execute(requester requester.RequesterInterface) {
 	url, err := requester.GetUrl()
 	if err != nil {
@@ -28,9 +29,11 @@ func (l *baseSubCmd) execute(requester requester.RequesterInterface) {
 		errChan <- err
 		return
 	}
-
-	if err := requester.Get(url, resChan); err != nil {
+	if res, err := requester.Execute(url); err != nil {
 		errChan <- err
+		return
+	} else {
+		resChan <- res
 		return
 	}
 }

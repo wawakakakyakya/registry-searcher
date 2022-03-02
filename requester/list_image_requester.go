@@ -19,12 +19,16 @@ type ListImageRequester struct {
 	*baseRequester
 }
 
-func (l *ListImageRequester) GetUrl() (string, error) {
-	url, err := l.url.MakeUrl()
+func (r *ListImageRequester) GetUrl() (string, error) {
+	url, err := r.url.MakeUrl()
 	if err != nil {
 		return "", err
 	}
 	return url, err
+}
+
+func (r *ListImageRequester) Execute(url string) (string, error) {
+	return r.get(url)
 }
 
 func NewListImageRequester(url registry_url.RegistryUrlInterface) RequesterInterface {

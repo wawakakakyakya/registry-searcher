@@ -10,12 +10,16 @@ type GetTagRequester struct {
 	*baseRequester
 }
 
-func (l *GetTagRequester) GetUrl() (string, error) {
-	url, err := l.url.MakeUrl()
+func (r *GetTagRequester) GetUrl() (string, error) {
+	url, err := r.url.MakeUrl()
 	if err != nil {
 		return "", err
 	}
 	return url, err
+}
+
+func (r *GetTagRequester) Execute(url string) (string, error) {
+	return r.get(url)
 }
 
 func NewGetTagRequester(url registry_url.RegistryUrlInterface) RequesterInterface {
